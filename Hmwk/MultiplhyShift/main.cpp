@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
      * months = 88
      */
 
-    unsigned char R1 = 0b01011000; //BP 0 WD 7
+    unsigned char R1 = 88; //BP 0 WD 7
 
     unsigned int R2 = 0x00155556; //BP -24 WD 24
 
@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
      * area = 110
      */
 
-    R1 = 0b01101110; //BP 0 WD 7
+    R1 = 110; //BP 0 WD 7
 
     R2 = 0x00517CC2; // BP-24 WD 24
 
@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
      *
      */
 
-    R1 = 0b00100100; // BP 0 WD 6 sqr(radius)
+    R1 = 36; // BP 0 WD 6 sqr(radius)
 
     R2 = 0x003243f7; // BP -20 WD 22
             

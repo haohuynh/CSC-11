@@ -7,8 +7,8 @@
 
 .global _start 
 _start: 
-MOV R1, 0x02A4 @BP -4 WD 10 sqr(radius)
-MOV R2, 0x3244 @BP -12 WD 14
+LDR R1, =0x02A4 @BP -4 WD 10 sqr(radius)
+LDR R2, =0x3244 @BP -12 WD 14
 MUL R0, R1, R2 @BP -16 WD 24
 LSR R0, #16 @BP 0 WD 8
 MOV R7, #1 
