@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
         quotient++;
     }
     
-    cout << "The quotient of 16\3 is: " << quotient << endl;
+    cout << "The quotient of 16\\3 is: " << quotient << endl;
     cout << "The reminder is: " << numerator;
         
     return 0;

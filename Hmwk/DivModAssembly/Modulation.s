@@ -16,8 +16,8 @@ CMP R0, R1 @ Check R0 < R1
 BLT _exit
 
 _wloop:
-SUB R0, R0, R1
-CMP R0, R1	@ if R0 >= R1, then repeat the subtraction
+SUB R0, R0, R1	@ Divide by the subtraction method	
+CMP R0, R1		@ if R0 >= R1, then repeat the subtraction
 BGE _wloop
 
 _exit:
