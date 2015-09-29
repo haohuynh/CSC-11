@@ -9,8 +9,8 @@
 .global _start
 
 _start:
-MOV R1, #45 @ R1 is the numerator
-MOV R2, #6  @ R2 is the denominator
+MOV R1, #54 @ R1 is the numerator
+MOV R2, #7  @ R2 is the denominator
 MOV R3, #1  @ R3 is the scalar of the original denominator
 MOV R4, R2	@ R4 is a copy of the denominator
 MOV R0, #0  @ R0 is the quotient
@@ -33,7 +33,7 @@ _cont1:
 
 _do_while:
 CMP R2, R1 @ Check R2 <= R1
-BLE _cont2:
+BLE _cont2
 
 _while_loop2:
 LSR R2, #1 @ R2/=2
