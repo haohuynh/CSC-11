@@ -18,29 +18,23 @@ MOV R0, #0  @ R0 is the quotient
 CMP R1, R2 @ Check R1 < R2
 BLT _exit
 
-
-CMP R1, R2 @ Check R1 == R2
-BEQ _cont1
-
 _while_loop1:
+CMP R1, R2 @ Check R1 <= R2
+BLE _cont1
 LSL R2, #1 @ R2*=2
 LSL R3, #1 @ R3*=2
-CMP R1, R2 @ Check R1 > R2
-BGT _while_loop1
-
+BAL _while_loop1
 _cont1:
 
 
 _do_while:
-CMP R2, R1 @ Check R2 <= R1
-BLE _cont2
 
 _while_loop2:
+CMP R2, R1 @ Check R2 <= R1
+BLE _cont2
 LSR R2, #1 @ R2/=2
 LSR R3, #1 @ R3/=2
-CMP R2, R1 @ Check R2 > R1
-BGT _while_loop2
-
+BAL _while_loop2
 _cont2:
 
 SUB R1, R1, R2 @ R1 -= R2
