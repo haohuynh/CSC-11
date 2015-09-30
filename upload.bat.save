@@ -1,6 +1,0 @@
-git add --all
-git config --global user.name "Hao Huynh"
-git config --global user.email hah.ptit@gmail.com
-<<<<<<< HEAD
-git commit -m "Complete Multiply-Shift Assembly
-git push origin master
