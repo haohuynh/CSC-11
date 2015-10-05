@@ -51,11 +51,19 @@ int main(int argc, char** argv) {
     R1 = 5; // Input: {Mon-Fri} ~ {1-5}
     R0 = 0; // Output: A Subject {CSC11, CSC5, CIS1A, OTHERS} ~ {11,55,1,0}
 
-    if (R1 == 1 || R1 == 3) {
+    if (R1 == 1) {
         R0 = 11;
     }
 
-    if (R1 == 2 || R1 == 4) {
+    if (R1 == 3) {
+        R0 = 11;
+    }
+
+    if (R1 == 2) {
+        R0 = 5;
+    }
+
+    if (R1 == 4) {
         R0 = 5;
     }
 
@@ -68,7 +76,7 @@ int main(int argc, char** argv) {
 
     // If Else - Start
     R1 = 1; // Input: {Mon-Fri} ~ {1-5}
-    R0 = 0; // Output: A Subject {CSC11, CSC5, CIS1A, OTHERS} ~ {11,55,1,0}
+    //R0 - Output: A Subject {CSC11, CSC5, CIS1A, OTHERS} ~ {11,55,1,0}
 
     if (R1 == 1 || R1 == 3) {
         R0 = 11;
@@ -76,6 +84,8 @@ int main(int argc, char** argv) {
         R0 = 5;
     } else if (R1 == 5) {
         R0 = 1;
+    } else {
+        R0 = 0;
     }
     cout << R0 << endl;
     // If Else - End
@@ -83,7 +93,7 @@ int main(int argc, char** argv) {
 
     // Switch - Start
     R1 = 2; // Input: {Mon-Fri} ~ {1-5}
-    R0 = 0; // Output: A Subject {CSC11, CSC5, CIS1A, OTHERS} ~ {11,55,1,0}
+    //R0 - Output: A Subject {CSC11, CSC5, CIS1A, OTHERS} ~ {11,55,1,0}
 
     switch (R1) {
         case 1:case 3:
@@ -99,6 +109,12 @@ int main(int argc, char** argv) {
         case 5:
         {
             R0 = 1;
+            break;
+        }
+        default:
+        {
+            R0 = 0;
+            break;
         }
     }
 

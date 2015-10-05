@@ -2,9 +2,9 @@
 
 _start:
 MOV R1, #10 @The number of elements in a array that needs summing
-MOV R2, #1 	@The counter
 MOV R0, #0	@The result
 
+MOV R2, #1 	@The counter
 _for_loop:
 CMP R2, R1 @ Check if R2 > R1
 BGT _exit
