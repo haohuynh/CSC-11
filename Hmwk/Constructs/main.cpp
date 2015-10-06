@@ -78,9 +78,13 @@ int main(int argc, char** argv) {
     R1 = 1; // Input: {Mon-Fri} ~ {1-5}
     //R0 - Output: A Subject {CSC11, CSC5, CIS1A, OTHERS} ~ {11,55,1,0}
 
-    if (R1 == 1 || R1 == 3) {
+    if (R1 == 1) {
         R0 = 11;
-    } else if (R1 == 2 || R1 == 4) {
+    } else if (R1 == 3) {
+        R0 = 11;
+    } else if (R1 == 2) {
+        R0 = 5;
+    } else if (R1 == 4) {
         R0 = 5;
     } else if (R1 == 5) {
         R0 = 1;

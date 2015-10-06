@@ -1,7 +1,7 @@
 .global _start
 
 _start:
-MOV R1, #7	@Input: {Mon-Fri} ~ {1-5}
+MOV R1, #2	@Input: {Mon-Fri} ~ {1-5}
 			@R0 - Output: A Subject {CSC11, CSC5, CIS1A, OTHERS} ~ {11,55,1,0}
 
 CMP R1, #1	@Check if R1 == 1
