@@ -1,7 +1,8 @@
 /*Dividing two 32-bit values.*/
-.global _start
+.global main
+.func main
 
-_start:
+main:
 MOV R1, #88 @ The dividend is in R1,
 MOV R2, #11 @ The divisor is in R2.
 MOV R4, R2 @ Put the divisor in R4. 
@@ -20,5 +21,4 @@ MOV R4, R4, LSR #1 @ Halve R4
 CMP R4, R2 @ Loop until we’ve gone 
 BHS Div2 @ past the original divisor
 
-MOV R7, #1 @Return control to the CLI
-SWI 0
+BX lr

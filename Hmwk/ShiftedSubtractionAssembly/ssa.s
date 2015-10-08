@@ -9,7 +9,7 @@
 .global _start
 
 _start:
-MOV R1, #54 @ R1 is the numerator
+MOV R1, #55 @ R1 is the numerator
 MOV R2, #7  @ R2 is the denominator
 MOV R3, #1  @ R3 is the scalar of the original denominator
 MOV R4, R2	@ R4 is a copy of the denominator

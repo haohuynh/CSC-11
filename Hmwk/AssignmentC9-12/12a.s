@@ -1,7 +1,8 @@
 /*Long Multiplication : UMULL R3, R4, R1, R2*/
-.global _start
+.global main
+.func main
 
-_start:
+main:
 MOV R1, #34 @ Testing number
 MOV R2, #32 @ Testing number
 MOVS R4, R1, LSR #16 @ R4 ms 16 bits of R1 
@@ -17,5 +18,4 @@ ADDCS R4, R4, #0x10000 @ Add carry to high pp
 ADDS R3, R3, R1, LSL #16 @ Add middle partial 
 ADC R4, R4, R1, LSR #16 @ sum lo and hi words
 
-MOV R7, #1 @Return control to the CLI
-SWI 0
+BX lr
