@@ -37,7 +37,7 @@ mult_by_5:
  bx lr /* return from main using lr */
 address_of_return2 : .word return2
 
-global main
+.global main
 main:
  ldr r1, address_of_return /* r1 ? &address_of_return */
  str lr, [r1] /* *r1 ? lr */
