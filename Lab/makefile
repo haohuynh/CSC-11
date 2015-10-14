@@ -1,4 +1,4 @@
-PROGRAMS=hello1 printf1 printf2 mul5main mul5func
+PROGRAMS=hello1 printf1 printf2 mul5func mul5main
 
 ifneq ($(MAKECMDGOALS),) 
 	PROGRAMS=$(MAKECMDGOALS) 

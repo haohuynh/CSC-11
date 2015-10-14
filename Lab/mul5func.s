@@ -10,6 +10,7 @@ return2: .word 0
 /*
 mult_by_5 function
 */
+.global mult_by_5
 mult_by_5:
  ldr r1, address_of_return2 /* r1 ? &address_of_return */
  str lr, [r1] /* *r1 ? lr */
