@@ -24,8 +24,12 @@ c2F:
  ldr r2, address_of_return /* r2 <- &address_of_return */
  str lr, [r2] /* *r2 -> lr */
  
+<<<<<<< HEAD
  push {r1,r3}
  ldr r0, address_of_wel_message /* r0 ? &wel_message */
+=======
+ ldr r0, address_of_wel_message /* r0 <- &wel_message */
+>>>>>>> 3d7ab3c00adfb8d712af55b178b7f21e698d1c11
  bl printf /* call to printf */
  pop {r1,r3}
 
@@ -37,9 +41,14 @@ _for_loop:
  mul r2, r0, r1 /*r2 = 9.0/5.0 * r1 , BP -20 WD 32*/
  lsr r2, #20 /*r2 = 9.0/5.0 * r1 , BP 0 WD 12*/
  add r2, r2, # 32	/*r2 = 9.0/5.0 * r1 + 32 */
+<<<<<<< HEAD
  
  push {r1,r3}	
  ldr r0, address_of_re_message /* r0 ? &message2 */
+=======
+
+ ldr r0, address_of_re_message /* r0 <- &message2 */
+>>>>>>> 3d7ab3c00adfb8d712af55b178b7f21e698d1c11
  bl printf /* call to printf */
  pop {r1,r3}
 
