@@ -13,10 +13,6 @@ message2: .asciz "If range is degree Centigrade input 1:\n"
 .balign 4
 message3: .asciz "If range is degree Fahrenheit input 2:\n"
 
-/* Test message */
-.balign 4
-testMessage: .asciz "Begin range is: %d and End range is: %d"
-
 /* Format pattern for scanf */
 .balign 4
 scan_pattern : .asciz "%d"
@@ -69,16 +65,14 @@ main:
  ldr r0, address_of_scan_pattern /* r0 ? &scan_pattern */
  ldr r1, address_of_choice /* r1 ? &choice */
  bl scanf /* call to scanf */
- 
- 
+
  
  ldr r1, address_of_beg_range /* r1 ? &beg_range */
  ldr r1, [r1] /* r1 ? *r1 */
- ldr r2, address_of_end_range /* r1 ? &end_range */
- ldr r2, [r2] /* r1 ? *r1 */
- ldr r0, address_of_test_message /* r0 ? &message2 */
- bl printf /* call to printf */
- 
+ ldr r3, address_of_end_range /* r1 ? &end_range */
+ ldr r3, [r3] /* r1 ? *r1 */
+ bl c2F /* Display Degree Centigrade to Degree Fahrenheit*/
+  
  
  ldr r0, address_of_choice /* r1 ? &choice */
  ldr r0, [r0] /* r0 = *r0 */
@@ -99,7 +93,6 @@ main:
 address_of_message1 : .word message1
 address_of_message2 : .word message2
 address_of_message3 : .word message3
-address_of_test_message : .word testMessage
 address_of_scan_pattern : .word scan_pattern
 address_of_beg_range : .word beg_range
 address_of_end_range : .word end_range
@@ -109,4 +102,4 @@ address_of_return : .word return
 /* External */
 .global printf
 .global scanf
-
+.global c2F
