@@ -7,10 +7,9 @@ endif
 all:$(PROGRAMS) 
 
 $(PROGRAMS):%:%.o 
-	ld -o $@ $<   
+	gcc -o $@ $<   
 
-clean: 
-	rm-f*.o$(PROGRAMS)
+
 
 
 
