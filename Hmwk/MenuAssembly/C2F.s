@@ -21,8 +21,8 @@ Display Degree Centigrade to Degree Fahrenheit
 .global c2F
 c2F:
 
- ldr r1, address_of_return /* r1 ? &address_of_return */
- str lr, [r1] /* *r1 ? lr */
+ ldr r2, address_of_return /* r2 <- &address_of_return */
+ str lr, [r2] /* *r2 -> lr */
  
  ldr r0, address_of_wel_message /* r0 ? &wel_message */
  bl printf /* call to printf */
