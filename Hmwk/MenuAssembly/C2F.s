@@ -24,7 +24,7 @@ c2F:
  ldr r2, address_of_return /* r2 <- &address_of_return */
  str lr, [r2] /* *r2 -> lr */
  
- ldr r0, address_of_wel_message /* r0 ? &wel_message */
+ ldr r0, address_of_wel_message /* r0 <- &wel_message */
  bl printf /* call to printf */
  
 _for_loop:
@@ -36,7 +36,7 @@ _for_loop:
  lsr r2, #20 /*r2 = 9.0/5.0 * r1 , BP 0 WD 12*/
  add r2, r2, # 32	/*r2 = 9.0/5.0 * r1 + 32 */
 
- ldr r0, address_of_re_message /* r0 ? &message2 */
+ ldr r0, address_of_re_message /* r0 <- &message2 */
  bl printf /* call to printf */
  
  add r1, r1, #1 @ r1++
