@@ -7,7 +7,7 @@ wel_message: .asciz "Display Degree Centigrade to Degree Fahrenheit\nCentigrade 
 
 /* Result message */
 .balign 4
-re_Message: .asciz "   %d          %d\n"
+re_message: .asciz "   %d          %d\n"
 
 .balign 4
 return: .word 0
