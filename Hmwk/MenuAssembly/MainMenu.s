@@ -67,10 +67,10 @@ main:
  bl scanf /* call to scanf */
 
  
- ldr r1, address_of_beg_range /* r1 ? &beg_range */
+ ldr r0, address_of_beg_range /* r1 ? &beg_range */
+ ldr r0, [r0] /* r1 ? *r1 */
+ ldr r1, address_of_end_range /* r1 ? &end_range */
  ldr r1, [r1] /* r1 ? *r1 */
- ldr r3, address_of_end_range /* r1 ? &end_range */
- ldr r3, [r3] /* r1 ? *r1 */
  bl c2F /* Display Degree Centigrade to Degree Fahrenheit*/
   
  

@@ -9,6 +9,14 @@ wel_message: .asciz "Display Degree Centigrade to Degree Fahrenheit\nCentigrade 
 .balign 4
 re_message: .asciz "  %d           %d\n"
 
+/* The begin range */
+.balign 4
+beg_range: .word 0
+
+/* The end range */
+.balign 4
+end_range: .word 0
+
 .balign 4
 return: .word 0
 
@@ -24,35 +32,41 @@ c2F:
  ldr r2, address_of_return /* r2 <- &address_of_return */
  str lr, [r2] /* *r2 -> lr */
  
-<<<<<<< HEAD
- push {r1,r3}
- ldr r0, address_of_wel_message /* r0 ? &wel_message */
-=======
+ ldr r2, address_of_beg_range
+ str r0, [r2]	
+ 
+ ldr r2, address_of_end_range
+ str r1, [r2]	
+  
  ldr r0, address_of_wel_message /* r0 <- &wel_message */
->>>>>>> 3d7ab3c00adfb8d712af55b178b7f21e698d1c11
  bl printf /* call to printf */
- pop {r1,r3}
+ 
 
 _for_loop:
- cmp r1, r3 @ Check if r1 > r3
+
+ ldr r2, address_of_beg_range
+ ldr r0, [r2]			
+	
+ ldr r2, address_of_end_range
+ ldr r1, [r2]		
+	
+ cmp r0, r1 @ Check if r0 > r1
  bgt _exit
  
+ mov r1, r0
  ldr r0, =0x1CCCCC /*r0 = 9.0/5.0 , BP -20 WD 24*/
  mul r2, r0, r1 /*r2 = 9.0/5.0 * r1 , BP -20 WD 32*/
  lsr r2, #20 /*r2 = 9.0/5.0 * r1 , BP 0 WD 12*/
  add r2, r2, # 32	/*r2 = 9.0/5.0 * r1 + 32 */
-<<<<<<< HEAD
- 
- push {r1,r3}	
- ldr r0, address_of_re_message /* r0 ? &message2 */
-=======
 
  ldr r0, address_of_re_message /* r0 <- &message2 */
->>>>>>> 3d7ab3c00adfb8d712af55b178b7f21e698d1c11
  bl printf /* call to printf */
- pop {r1,r3}
-
- add r1, r1, #1 @ r1++
+ 
+ ldr r2, address_of_beg_range
+ ldr r0, [r2]	
+ add r0, r0, #1 @ r0++
+ str r0, [r2]
+ 
  bal _for_loop
  
  
@@ -63,6 +77,8 @@ _exit:
  
 address_of_wel_message : .word wel_message 
 address_of_re_message : .word re_message 
+address_of_beg_range : .word beg_range
+address_of_end_range : .word end_range
 address_of_return : .word return
 
 /* External */
