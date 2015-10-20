@@ -54,7 +54,7 @@ _for_loop:
  bgt _exit
  
  mov r1, r0
- ldr r0, =0x1CCCCC /*r0 = 9.0/5.0 , BP -20 WD 24*/
+ ldr r0, =0x1CCCCD /*r0 = 9.0/5.0 , BP -20 WD 24*/
  mul r2, r0, r1 /*r2 = 9.0/5.0 * r1 , BP -20 WD 32*/
  lsr r2, #20 /*r2 = 9.0/5.0 * r1 , BP 0 WD 12*/
  add r2, r2, # 32	/*r2 = 9.0/5.0 * r1 + 32 */
