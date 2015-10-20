@@ -7,7 +7,7 @@ wel_message: .asciz "Display Degree Centigrade to Degree Fahrenheit\nCentigrade 
 
 /* Result message */
 .balign 4
-re_message: .asciz "   %d          %d\n"
+re_message: .asciz "  %d           %d\n"
 
 .balign 4
 return: .word 0
@@ -24,9 +24,11 @@ c2F:
  ldr r2, address_of_return /* r2 <- &address_of_return */
  str lr, [r2] /* *r2 -> lr */
  
+ push {r1,r3}
  ldr r0, address_of_wel_message /* r0 ? &wel_message */
  bl printf /* call to printf */
- 
+ pop {r1,r3}
+
 _for_loop:
  cmp r1, r3 @ Check if r1 > r3
  bgt _exit
@@ -35,10 +37,12 @@ _for_loop:
  mul r2, r0, r1 /*r2 = 9.0/5.0 * r1 , BP -20 WD 32*/
  lsr r2, #20 /*r2 = 9.0/5.0 * r1 , BP 0 WD 12*/
  add r2, r2, # 32	/*r2 = 9.0/5.0 * r1 + 32 */
-
+ 
+ push {r1,r3}	
  ldr r0, address_of_re_message /* r0 ? &message2 */
  bl printf /* call to printf */
- 
+ pop {r1,r3}
+
  add r1, r1, #1 @ r1++
  bal _for_loop
  
