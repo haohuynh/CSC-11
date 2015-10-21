@@ -66,26 +66,34 @@ main:
  ldr r1, address_of_choice /* r1 ? &choice */
  bl scanf /* call to scanf */
 
+ ldr r0, address_of_choice /* r1 ? &choice */
+ ldr r0, [r0] /* r0 = *r0 */
  
+ cmp r0, #1
+ beq _case1
+ cmp r0, #2
+ beq _case2
+ bal _exit
+ 
+ _case1:
  ldr r0, address_of_beg_range /* r1 ? &beg_range */
  ldr r0, [r0] /* r1 ? *r1 */
  ldr r1, address_of_end_range /* r1 ? &end_range */
  ldr r1, [r1] /* r1 ? *r1 */
  bl c2F /* Display Degree Centigrade to Degree Fahrenheit*/
-  
+ bal _break 
+ 
+ _case2:
  ldr r0, address_of_beg_range /* r1 ? &beg_range */
  ldr r0, [r0] /* r1 ? *r1 */
  ldr r1, address_of_end_range /* r1 ? &end_range */
  ldr r1, [r1] /* r1 ? *r1 */
  bl f2C /* Display Degree Centigrade to Degree Fahrenheit*/ 
  
- ldr r0, address_of_choice /* r1 ? &choice */
- ldr r0, [r0] /* r0 = *r0 */
- cmp r0, #0
- ble _exit
- cmp r0, #3
- bge _exit
  
+ _break:
+ 
+  
  bal _do_while_loop
   
  

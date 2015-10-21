@@ -1,13 +1,8 @@
-PROGRAMS=C2F F2C MainMenu 
+as -o C.o C2F.s
+as -o F.o F2C.s
+as -o M.o MainMenu.s
+gcc -o M C.o F.o M.o
 
-ifneq ($(MAKECMDGOALS),) 
-	PROGRAMS=$(MAKECMDGOALS) 
-endif 
-
-all:$(PROGRAMS) 
-
-$(PROGRAMS):%.o:%.s
-	as -o $@ $<   
 
 
 
