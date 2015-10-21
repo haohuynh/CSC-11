@@ -1,4 +1,4 @@
-PROGRAMS=C2F MainMenu 
+PROGRAMS=C2F F2C MainMenu 
 
 ifneq ($(MAKECMDGOALS),) 
 	PROGRAMS=$(MAKECMDGOALS) 
@@ -6,8 +6,8 @@ endif
 
 all:$(PROGRAMS) 
 
-$(PROGRAMS):%:%.o 
-	gcc -o $@ $<   
+$(PROGRAMS):%.o:%.s
+	as -o $@ $<   
 
 
 

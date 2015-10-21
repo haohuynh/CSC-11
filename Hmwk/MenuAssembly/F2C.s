@@ -25,6 +25,7 @@ return: .word 0
 
 /*
 Display Degree Fahrenheit to Degree Centigrade
+*/
 .global f2C
 f2C:
 
