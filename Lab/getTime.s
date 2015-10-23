@@ -21,8 +21,6 @@ main:
  mov r1, r0
  
  ldr r0, addr_of_timer_mess /* r0 ? &message2 */
- ldr r1, address_of_number_read /* r1 ? &number_read */
- ldr r1, [r1] /* r1 ? *r1 */
  bl printf /* call to printf */
   
  
