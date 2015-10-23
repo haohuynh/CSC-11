@@ -2,7 +2,7 @@
 
 /* Timer message */
 .balign 4
-timer_mess: .asciz "The time is %d\n"
+timer_mess: .asciz "The random number from current time is: %d\n"
 
 .balign 4
 return: .word 0
@@ -12,57 +12,29 @@ return: .word 0
 .global main
 main:
 
- ldr r1, address_of_return /* r1 ? &address_of_return */
+ ldr r1, addr_of_return /* r1 ? &address_of_return */
  str lr, [r1] /* *r1 ? lr */
- 
- mov r0,#1
+
+ mov r0, #0
+ bl time
  bl srand
 
  bl rand
  mov r1, r0
- 
+
  ldr r0, addr_of_timer_mess /* r0 ? &message2 */
- bl printf /* call to printf */
-  
-  
- mov r0,#11
- bl srand
+ bl printf /* call to printf*/
 
- bl rand
- mov r1, r0
- 
- ldr r0, addr_of_timer_mess /* r0 ? &message2 */
- bl printf /* call to printf */ 
-  
- mov r0,#19
- bl srand
-
- bl rand
- mov r1, r0
- 
- ldr r0, addr_of_timer_mess /* r0 ? &message2 */
- bl printf /* call to printf */
-
-
- mov r0,#1
- bl srand
-
- bl rand
- mov r1, r0
- 
- ldr r0, addr_of_timer_mess /* r0 ? &message2 */
- bl printf /* call to printf */ 
- 
- 
- ldr lr, address_of_return /* lr ? &address_of_return */
+ ldr lr, addr_of_return /* lr ? &address_of_return */
  ldr lr, [lr] /* lr ? *lr */
  bx lr /* return from main using lr */
- 
+
 addr_of_timer_mess : .word timer_mess
-address_of_return : .word return
+addr_of_return : .word return
 
 /* External */
 .global printf
 .global scanf
 .global rand
 .global srand
+.global time
