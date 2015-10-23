@@ -1,5 +1,4 @@
-/* -- getTimer.s */
-.data
+/* -- getTimer.s */ .data
 
 /* Timer message */
 .balign 4
@@ -16,8 +15,10 @@ main:
  ldr r1, address_of_return /* r1 ? &address_of_return */
  str lr, [r1] /* *r1 ? lr */
  
- mov r7, #13	
- swi 0	
+ mov r0,#1
+ bl srand
+
+ bl rand
  mov r1, r0
  
  ldr r0, addr_of_timer_mess /* r0 ? &message2 */
@@ -34,3 +35,5 @@ address_of_return : .word return
 /* External */
 .global printf
 .global scanf
+.global rand
+.global srand
