@@ -24,6 +24,35 @@ main:
  ldr r0, addr_of_timer_mess /* r0 ? &message2 */
  bl printf /* call to printf */
   
+  
+ mov r0,#11
+ bl srand
+
+ bl rand
+ mov r1, r0
+ 
+ ldr r0, addr_of_timer_mess /* r0 ? &message2 */
+ bl printf /* call to printf */ 
+  
+ mov r0,#19
+ bl srand
+
+ bl rand
+ mov r1, r0
+ 
+ ldr r0, addr_of_timer_mess /* r0 ? &message2 */
+ bl printf /* call to printf */
+
+
+ mov r0,#1
+ bl srand
+
+ bl rand
+ mov r1, r0
+ 
+ ldr r0, addr_of_timer_mess /* r0 ? &message2 */
+ bl printf /* call to printf */ 
+ 
  
  ldr lr, address_of_return /* lr ? &address_of_return */
  ldr lr, [lr] /* lr ? *lr */
