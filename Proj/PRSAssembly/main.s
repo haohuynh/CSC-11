@@ -68,7 +68,7 @@ main:
  _case1:
  /*Process a Game for Human vs Computer*/
  bl rand
- mov r1, r0
+ ldr r1, #75E688E
  mov r2, #3
  bl getMod
  bal _break

@@ -13,7 +13,7 @@ return: .word 0
 
 /*
  Find the result of R1%R2
- R1 is the numerator
+ R1 is the numerator and will be the remainder
  R2 is the denominator
 */
 .global getMod
@@ -52,12 +52,13 @@ getMod:
  lsr r3, #1 @ R3/=2
  bal _while_loop2
  _cont2:
-
+ 
+ cmp r2, r4 @ Check r2 >= r4
+ blt _exit
  sub r1, r1, r2 @ r1 -= R2
  add r0, r0, r3 @ r0 += R3
-
- cmp r2, r4 @ Check r2 >= r4
- bge _do_while
+ 
+ bal _do_while
  
  push {r0, r1, r2} 
  ldr r0, addr_of_result_mess /* r0 <- &result_mess */

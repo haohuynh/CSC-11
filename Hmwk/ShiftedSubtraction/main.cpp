@@ -14,7 +14,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-    int R1 = 59; // The Numerator
+    int R1 = 0x75E688E; // The Numerator
 
     int R2 = 6; // The Denominator
 
@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
         R2 <<= 1;
         R3 <<= 1;
     }
-    
+
     do {//Updating the new coefficient if possible
 
         while (R2 > R1) {//Shift the denominator to the right until it is less than or equal to the numerator
@@ -42,14 +42,19 @@ int main(int argc, char** argv) {
             R3 >>= 1;
         }
 
-        R1 -= R2;
-        R0 += R3;
+        if (R2 >= R4) {
+            R1 -= R2;
+            R0 += R3;
+        }else {
+            break;
+        }
 
-    } while (R2 >= R4);
+
+    } while (true);
 
 
     cout << R0;
-
+    cout << "\n" << R1;
     return 0;
 }
 
