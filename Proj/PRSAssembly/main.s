@@ -67,10 +67,9 @@ main:
  
  _case1:
  /*Process a Game for Human vs Computer*/
- bl rand
- ldr r1, #75E688E
- mov r2, #3
- bl getMod
+ bl getRandomPRS
+ ldr r0, n_scan_pattern_addr
+ bl printf
  bal _break
  
  _case2:
@@ -109,5 +108,4 @@ return_addr : .word return
 .global srand
 .global time
 
-.global rand
-.global getMod
+.global getRandomPRS

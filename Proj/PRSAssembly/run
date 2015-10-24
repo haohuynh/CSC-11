@@ -1,3 +1,4 @@
-as -g -o getMod.o getMod.s
-as -g -o main.o main.s
-gcc -g -o main getMod.o main.o
+as -o getMod.o getMod.s
+as -o getRandomPRS.o getRandomPRS.s
+as -o main.o main.s
+gcc -o main getMod.o getRandomPRS.o main.o
