@@ -15,7 +15,7 @@ return: .word 0
 .global getMod
 getMod:
 
- ldr r0, addr_of_return /* r0 <- &return */
+ ldr r0, return_addr /* r0 <- &return */
  str lr, [r0] /* *r2 <- lr */
   
  mov r3, #1  @ r3 is the scalar of the original denominator
