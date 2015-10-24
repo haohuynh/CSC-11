@@ -1,13 +1,13 @@
 /* -- getMod.s */
 .data
 
-/* The next instruction after getMod */
-.balign 4
-return: .word 0
-
 /* The result message */
 .balign 4
 result_mess: .asciz "  %d           %d\n"
+
+/* The next instruction after getMod */
+.balign 4
+return: .word 0
 
 .text
 
@@ -22,10 +22,10 @@ getMod:
  ldr r0, return_addr /* r0 <- &return */
  str lr, [r0] /* *r2 <- lr */
   
- push {r0, r1} 
+ push {r0, r1, r2} 
  ldr r0, addr_of_result_mess /* r0 <- &result_mess */
  bl printf /* call to printf */ 
- pop {r0, r1} 
+ pop {r0, r1, r2} 
  
  mov r3, #1  @ r3 is the scalar of the original denominator
  mov r4, r2	@ r4 is a copy of the denominator
@@ -59,10 +59,10 @@ getMod:
  cmp r2, r4 @ Check r2 >= r4
  bge _do_while
  
- push {r0, r1} 
+ push {r0, r1, r2} 
  ldr r0, addr_of_result_mess /* r0 <- &result_mess */
  bl printf /* call to printf */
- pop {r0, r1}
+ pop {r0, r1, r2} 
 
  _exit:
  ldr lr, return_addr /* lr <- &return */
@@ -70,7 +70,8 @@ getMod:
  bx lr /* return from main using lr */
  
 /*Addresses Referencing*/ 
-return_addr : .word return
 addr_of_result_mess : .word result_mess 
+return_addr : .word return
+
 
 .global printf
