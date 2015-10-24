@@ -1,4 +1,0 @@
-as -o getMod.o getMod.s
-as -o getRandomPRS.o getRandomPRS.s
-as -o main.o main.s
-gcc -o main getMod.o getRandomPRS.o main.o
