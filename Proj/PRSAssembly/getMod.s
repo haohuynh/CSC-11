@@ -5,6 +5,10 @@
 .balign 4
 return: .word 0
 
+/* The result message */
+.balign 4
+result_mess: .asciz "  %d           %d\n"
+
 .text
 
 /*
@@ -17,6 +21,9 @@ getMod:
 
  ldr r0, return_addr /* r0 <- &return */
  str lr, [r0] /* *r2 <- lr */
+  
+ ldr r0, addr_of_result_mess /* r0 <- &result_mess */
+ bl printf /* call to printf */ 
   
  mov r3, #1  @ r3 is the scalar of the original denominator
  mov r4, r2	@ r4 is a copy of the denominator
@@ -49,7 +56,10 @@ getMod:
 
  cmp r2, r4 @ Check r2 >= r4
  bge _do_while
-
+ 
+ ldr r0, addr_of_result_mess /* r0 <- &result_mess */
+ bl printf /* call to printf */
+ 
 
  _exit:
  ldr lr, return_addr /* lr <- &return */
@@ -58,5 +68,6 @@ getMod:
  
 /*Addresses Referencing*/ 
 return_addr : .word return
+addr_of_result_mess : .word result_mess 
 
-
+.global printf
