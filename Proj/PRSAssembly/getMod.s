@@ -22,9 +22,11 @@ getMod:
  ldr r0, return_addr /* r0 <- &return */
  str lr, [r0] /* *r2 <- lr */
   
+ push {r0, r1} 
  ldr r0, addr_of_result_mess /* r0 <- &result_mess */
  bl printf /* call to printf */ 
-  
+ pop {r0, r1} 
+ 
  mov r3, #1  @ r3 is the scalar of the original denominator
  mov r4, r2	@ r4 is a copy of the denominator
  mov r0, #0  @ r0 is the quotient
@@ -57,9 +59,10 @@ getMod:
  cmp r2, r4 @ Check r2 >= r4
  bge _do_while
  
+ push {r0, r1} 
  ldr r0, addr_of_result_mess /* r0 <- &result_mess */
  bl printf /* call to printf */
- 
+ pop {r0, r1}
 
  _exit:
  ldr lr, return_addr /* lr <- &return */
