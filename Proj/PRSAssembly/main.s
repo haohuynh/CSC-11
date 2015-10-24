@@ -74,6 +74,7 @@ main:
  bl rand
  mov r1, r0
  mov r2, #3
+ bl getMod
  ldr r0, addr_of_result_mess /* r0 <- &result_mess */
  bl printf /* call to printf */
  bal _break
