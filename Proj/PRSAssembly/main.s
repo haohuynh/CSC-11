@@ -28,7 +28,7 @@ player_option: .word 0
 
 /* Where scanf will store a player's request to continue the game*/
 .balign 4
-player_request: .word 0
+player_request: .asciz ""
 
 /* The next instruction after main */
 .balign 4
