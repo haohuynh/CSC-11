@@ -12,7 +12,7 @@ menu_opt_mess: .asciz "\nSelecting an option for playing the game:\n1.Human Play
 
 /* The replay request message */
 .balign 4
-replay_mess: .asciz "You want to replay Paper-Rock-Scissor game (1 == Yes / Other Numbers == No) ?"
+replay_mess: .asciz "You want to replay Paper-Rock-Scissor game (1 = Yes / 2 = No) ?"
 
 /* A numeric format pattern for scanf */
 .balign 4
@@ -29,6 +29,10 @@ player_request: .word 0
 /* The next instruction after main */
 .balign 4
 return: .word 0
+
+/* The result message */
+.balign 4
+result_mess: .asciz "  %d           %d\n"
 
 .text
 
@@ -67,6 +71,11 @@ main:
  
  _case1:
  /*Process a Game for Human vs Computer*/
+ bl rand
+ mov r1, r0
+ mov r2, 3
+ ldr r0, addr_of_result_mess /* r0 <- &result_mess */
+ bl printf /* call to printf */
  bal _break
  
  _case2:
@@ -99,8 +108,13 @@ player_option_addr : .word player_option
 player_request_addr : .word player_request
 return_addr : .word return
 
+addr_of_result_mess : .word result_mess 
+
 /* External Functions*/
 .global printf
 .global scanf
 .global srand
 .global time
+
+.global rand
+.global getMod

@@ -1,3 +1,3 @@
+as -g -o getMod.o getMod.s
 as -g -o main.o main.s
-gcc -g -o main main.o
-./main
+gcc -g -o main getMod.o main.o
