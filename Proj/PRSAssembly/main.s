@@ -12,15 +12,11 @@ menu_opt_mess: .asciz "\nSelecting an option for playing the game:\n1.Human Play
 
 /* The replay request message */
 .balign 4
-replay_mess: .asciz "You want to replay Paper-Rock-Scissor game (Y/N) ?"
+replay_mess: .asciz "You want to replay Paper-Rock-Scissor game (1 == Yes / Other Numbers == No) ?"
 
 /* A numeric format pattern for scanf */
 .balign 4
 n_scan_pattern : .asciz "%d"
-
-/* A character format pattern for scanf */
-.balign 4
-c_scan_pattern : .asciz "%c"
 
 /* Where scanf will store a menu option*/
 .balign 4
@@ -28,7 +24,7 @@ player_option: .word 0
 
 /* Where scanf will store a player's request to continue the game*/
 .balign 4
-player_request: .asciz ""
+player_request: .word 0
 
 /* The next instruction after main */
 .balign 4
@@ -67,7 +63,7 @@ main:
  beq _case1
  cmp r0, #2
  beq _case2
- bal _exit /* In case of there is no valid choice, ask for replaying the game*/
+ bal _break /* In case of there is no valid choice, ask for replaying the game*/
  
  _case1:
  /*Process a Game for Human vs Computer*/
@@ -75,24 +71,21 @@ main:
  
  _case2:
   /*Process a Game for 2 Computer Bots*/
+  
  _break:
-   
  ldr r0, replay_mess_addr /* r0 <- &replay_mess*/
  bl printf /* call to printf */	  
  
- ldr r0, c_scan_pattern_addr /* r0 <- &c_scan_pattern*/
- ldr r1, player_request /* r1 <- &player_request*/
+ ldr r0, n_scan_pattern_addr /* r0 <- &n_scan_pattern*/
+ ldr r1, player_request_addr /* r1 <- &player_request*/
  bl scanf /* call to scanf */
  
- /*ldr r0, player_request_addr /* r0 <- &player_request*/
- /*ldr r0, [r0] /* r0 <- *r0 */
+ ldr r0, player_request_addr /* r0 <- &player_request*/
+ ldr r0, [r0] /* r0 <- *r0 */
  
- /*cmp r0, #121 /* r0 == 'y' */
- /*beq _do_while_loop
- /*cmp r0, #89 /* r0 == 'Y' */
- bal _do_while_loop 
+ cmp r0, #1 /*The player agreed to continue*/
+ beq _do_while_loop 
  
- _exit: 
  ldr lr, return_addr /* lr <- &addr_of_return */
  ldr lr, [lr] /* lr <- *lr */
  bx lr /* return from main using lr */
@@ -102,7 +95,6 @@ wel_mess_addr : .word wel_mess
 menu_opt_mess_addr : .word menu_opt_mess
 replay_mess_addr : .word replay_mess
 n_scan_pattern_addr : .word n_scan_pattern
-c_scan_pattern_addr : .word c_scan_pattern
 player_option_addr : .word player_option
 player_request_addr : .word player_request
 return_addr : .word return
