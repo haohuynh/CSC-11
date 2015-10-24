@@ -18,17 +18,13 @@ replay_mess: .asciz "You want to replay Paper-Rock-Scissor game (Y/N) ?"
 .balign 4
 n_scan_pattern : .asciz "%d"
 
-/* A character format pattern for scanf */
-.balign 4
-c_scan_pattern : .asciz "%c"
-
 /* Where scanf will store a menu option*/
 .balign 4
 player_option: .word 0
 
 /* Where scanf will store a player's request to continue the game*/
 .balign 4
-player_request: .asciz ""
+player_request: .ascii ""
 
 /* The next instruction after main */
 .balign 4
@@ -71,7 +67,7 @@ main:
  
  _case1:
  /*Process a Game for Human vs Computer*/
- bal _break 
+ bal _exit
  
  _case2:
   /*Process a Game for 2 Computer Bots*/
@@ -79,19 +75,22 @@ main:
    
  ldr r0, replay_mess_addr /* r0 <- &replay_mess*/
  bl printf /* call to printf */	  
-   
- ldr r0, c_scan_pattern_addr /* r0 <- &c_scan_pattern*/
- ldr r1, player_request_addr /* r1 <- &player_request*/
- bl scanf /* call to scanf */  
- 
- ldr r0, player_request_addr /* r0 <- &player_request*/
- ldr r0, [r0] /* r0 <- *r0 */
- 
- cmp r0, #121 /* r0 == 'y' */
- beq _do_while_loop
- cmp r0, #89 /* r0 == 'Y' */
- beq _do_while_loop 
   
+ mov r7, #3 /*Read syscall number*/
+ mov r0, #0 /*stdout is monitor*/
+ mov r2, #1 /*read the first char*/
+ ldr r1, player_request_addr /*The input char location*/ 
+ swi 0
+ 
+ /*ldr r0, player_request_addr /* r0 <- &player_request*/
+ /*ldr r0, [r0] /* r0 <- *r0 */
+ 
+ /*cmp r0, #121 /* r0 == 'y' */
+ /*beq _do_while_loop
+ /*cmp r0, #89 /* r0 == 'Y' */
+ bal _do_while_loop 
+ 
+ _exit: 
  ldr lr, return_addr /* lr <- &addr_of_return */
  ldr lr, [lr] /* lr <- *lr */
  bx lr /* return from main using lr */
@@ -101,7 +100,6 @@ wel_mess_addr : .word wel_mess
 menu_opt_mess_addr : .word menu_opt_mess
 replay_mess_addr : .word replay_mess
 n_scan_pattern_addr : .word n_scan_pattern
-c_scan_pattern_addr : .word c_scan_pattern
 player_option_addr : .word player_option
 player_request_addr : .word player_request
 return_addr : .word return
