@@ -63,11 +63,11 @@ main:
  beq _case1
  cmp r0, #2
  beq _case2
- bal _break /* In case of there is no valid choice, ask for replaying the game*/
+ bal _exit /* In case of there is no valid choice, ask for replaying the game*/
  
  _case1:
  /*Process a Game for Human vs Computer*/
- bal _exit
+ bal _break
  
  _case2:
   /*Process a Game for 2 Computer Bots*/
