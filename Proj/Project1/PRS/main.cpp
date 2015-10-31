@@ -13,7 +13,7 @@
 using namespace std;
 
 enum PRS {
-    PAPER = 1, ROCK = 2, SCISSOR = 3
+    PAPER = 1, ROCK = 2, SCISSORS = 3
 };
 
 const string FIRST_RULE = "Paper covers rock";
@@ -37,7 +37,7 @@ PRS getARandomChoice() {
 
         case 1: return PAPER;
         case 2: return ROCK;
-        default: return SCISSOR;
+        default: return SCISSORS;
 
     }
 
@@ -54,7 +54,7 @@ void displayPRS(PRS prs) {
     } else if (prs == ROCK) {
         cout << "Rock\n";
     } else {
-        cout << "Scissor\n";
+        cout << "Scissors\n";
     }
 }
 
@@ -75,14 +75,14 @@ bool isTheFormerWin(PRS formerChoice, PRS latterChoice) {
     }
 
     if (formerChoice == ROCK) {
-        if (latterChoice == SCISSOR) {
+        if (latterChoice == SCISSORS) {
             cout << "Apply rule: " << SECOND_RULE << endl;
             return true;
         }
 
     }
 
-    if (formerChoice == SCISSOR) {
+    if (formerChoice == SCISSORS) {
         if (latterChoice == PAPER) {
             cout << "Apply rule: " << THIRD_RULE << endl;
             return true;

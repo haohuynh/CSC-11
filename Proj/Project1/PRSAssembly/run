@@ -1,0 +1,9 @@
+as -o getMod.o getMod.s
+as -o getRandomPRS.o getRandomPRS.s
+as -o displayPRS.o displayPRS.s
+as -o isTheFormerWin.o isTheFormerWin.s
+as -o findTheWinner.o findTheWinner.s
+as -o processHumanVsComputer.o processHumanVsComputer.s
+as -o processComputerBots.o processComputerBots.s
+as -o main.o main.s
+gcc -o main getMod.o getRandomPRS.o displayPRS.o isTheFormerWin.o findTheWinner.o processHumanVsComputer.o processComputerBots.o main.o
