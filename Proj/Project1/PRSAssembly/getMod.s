@@ -44,7 +44,7 @@ getMod:
  bal _while_loop2
  _cont2:
  
- cmp r2, r4 @ Check r2 >= r4
+ cmp r2, r4 @ Check r2 < r4
  blt _exit
  sub r1, r1, r2 @ r1 -= R2
  add r0, r0, r3 @ r0 += R3
