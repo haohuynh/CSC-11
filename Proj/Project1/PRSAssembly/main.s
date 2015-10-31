@@ -12,11 +12,15 @@ menu_opt_mess: .asciz "\nSelecting an option for playing the game:\n1.Human Play
 
 /* The replay request message */
 .balign 4
-replay_mess: .asciz "You want to replay Paper-Rock-Scissors game (1 = Yes/ 2 = No)? "
+replay_mess: .asciz "You want to replay Paper-Rock-Scissors game (y/n)? "
 
 /* A numeric format pattern for scanf */
 .balign 4
 n_scan_pattern : .asciz "%d"
+
+/* A numeric format pattern for scanf */
+.balign 4
+c_scan_pattern : .asciz " %c"
 
 /* Where scanf will store a menu option*/
 .balign 4
@@ -79,14 +83,14 @@ main:
  ldr r0, replay_mess_addr /* r0 <- &replay_mess*/
  bl printf /* call to printf */	  
  
- ldr r0, n_scan_pattern_addr /* r0 <- &n_scan_pattern*/
+ ldr r0, c_scan_pattern_addr /* r0 <- &n_scan_pattern*/
  ldr r1, player_request_addr /* r1 <- &player_request*/
  bl scanf /* call to scanf */
  
  ldr r0, player_request_addr /* r0 <- &player_request*/
  ldr r0, [r0] /* r0 <- *r0 */
  
- cmp r0, #1 /*The player agreed to continue*/
+ cmp r0, #'y' /*The player agreed to continue*/
  beq _do_while_loop 
  
  ldr lr, return_addr /* lr <- &addr_of_return */
@@ -98,6 +102,7 @@ wel_mess_addr : .word wel_mess
 menu_opt_mess_addr : .word menu_opt_mess
 replay_mess_addr : .word replay_mess
 n_scan_pattern_addr : .word n_scan_pattern
+c_scan_pattern_addr : .word c_scan_pattern
 player_option_addr : .word player_option
 player_request_addr : .word player_request
 return_addr : .word return
