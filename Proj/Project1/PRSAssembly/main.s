@@ -4,7 +4,7 @@
 
 /* The welcome message */
 .balign 4
-wel_mess: .asciz "**********The Paper-Rock-Scissor game**********\nPaper covers rock.\nRock break scissors.\nScissors cut paper.\nA tie!\n"
+wel_mess: .asciz "**********The Paper-Rock-Scissors game**********\nPaper covers rock.\nRock break scissors.\nScissors cut paper.\nA tie!\n"
 
 /* The menu option message */
 .balign 4
@@ -12,7 +12,7 @@ menu_opt_mess: .asciz "\nSelecting an option for playing the game:\n1.Human Play
 
 /* The replay request message */
 .balign 4
-replay_mess: .asciz "You want to replay Paper-Rock-Scissor game (1 = Yes/ 2 = No)? "
+replay_mess: .asciz "You want to replay Paper-Rock-Scissors game (1 = Yes/ 2 = No)? "
 
 /* A numeric format pattern for scanf */
 .balign 4

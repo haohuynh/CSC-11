@@ -7,11 +7,11 @@ frst_rule_mess: .asciz "Apply rule: Paper covers rock.\n"
 
 /* The second rule message */
 .balign 4
-sec_rule_mess: .asciz "Apply rule: Rock breaks scissor.\n"
+sec_rule_mess: .asciz "Apply rule: Rock breaks scissors.\n"
 
 /* The third rule message */
 .balign 4
-thrd_rule_mess: .asciz "Apply rule: Scissor cuts paper.\n"
+thrd_rule_mess: .asciz "Apply rule: Scissors cuts paper.\n"
 
 /* The next instruction after isTheFormerWin */
 .balign 4
@@ -20,7 +20,7 @@ return: .word 0
 .text
 
 /*
- This function checks if the fromer choice can win the game
+ This function checks if the former choice can win the game
  r1: the former choice
  r2: the latter choice
  r0: is a returned flag (1=true, 0=false)

@@ -3,7 +3,7 @@
 
 /* The first player message */
 .balign 4
-human_mess: .asciz "Please enter your choice (p = Paper, r = Rock  or s = Scissor):"
+human_mess: .asciz "Please enter your choice (p = Paper, r = Rock  or s = Scissors):"
 
 /* The first player choice message*/
 .balign 4

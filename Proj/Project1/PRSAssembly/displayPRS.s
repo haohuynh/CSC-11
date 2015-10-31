@@ -11,7 +11,7 @@ rock_mess: .asciz "Rock\n"
 
 /* The scissors message */
 .balign 4
-scissors_mess: .asciz "Scissor\n"
+scissors_mess: .asciz "Scissors\n"
 
 /* The next instruction after displayPRS */
 .balign 4
@@ -20,7 +20,7 @@ return: .word 0
 .text
 
 /*
- This function display a player's choice by name (Paper,Rock, or Scissor)
+ This function display a player's choice by name (Paper,Rock, or Scissors)
  r1 contains the value of a choice
 */
 .global displayPRS
