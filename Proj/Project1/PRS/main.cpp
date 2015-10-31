@@ -18,7 +18,7 @@ enum PRS {
 
 const string FIRST_RULE = "Paper covers rock";
 
-const string SECOND_RULE = "Rock break scissors";
+const string SECOND_RULE = "Rock breaks scissors";
 
 const string THIRD_RULE = "Scissors cut paper";
 
@@ -116,12 +116,24 @@ void findTheWiner(PRS firstPlayerChoice, PRS secondPlayerChoice) {
  */
 void processForHumanVsComputer() {
 
+    char fPChoice;
+
     int firstPlayerChoice;
 
     int secondPlayerChoice;
 
-    cout << "Please enter your choice (1 = Paper, 2 = Rock  or 3 = Scissor):\n";
-    cin >> firstPlayerChoice;
+    cout << "Please enter your choice (p = Paper, r = Rock  or s = Scissor):\n";
+    cin >> fPChoice;
+
+    if (fPChoice == 'p') {
+        firstPlayerChoice = 1;
+    } else if (fPChoice == 'r') {
+        firstPlayerChoice = 2;
+    } else {
+        firstPlayerChoice = 3;
+    }
+    cout << "The human choice is ";
+    displayPRS(static_cast<PRS> (firstPlayerChoice));
 
     secondPlayerChoice = getARandomChoice();
     cout << "The computer choice is ";
@@ -196,7 +208,7 @@ int main(int argc, char** argv) {
                 processForComputerBots();
             }
         }
-        
+
         cout << "You want to replay Paper-Rock-Scissor game (Y/N) ?";
         cin >> result;
 
