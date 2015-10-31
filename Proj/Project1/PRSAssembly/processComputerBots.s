@@ -16,7 +16,7 @@ return: .word 0
 .text
 
 /*
-	Process a Game for Human vs Computer
+	Process a Game for two computer bots
 */
 .global processComputerBots
 processComputerBots:
