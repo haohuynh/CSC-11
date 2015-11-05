@@ -11,8 +11,8 @@ genFiTerm:
      
     cmp r0, #2         /* compare r0 and 2 */
     bgt gt_2     	   /* if r0 > 2 then branch */
-    mov r0, #1         /* r0 = 1. This is the return */
-    bal end
+    mov r0, #1         /* if r0 <=2 then return r0 = 1 */
+    bal exit
 	
 gt_2:
                  
@@ -26,6 +26,6 @@ gt_2:
 	
 	add r0, r0, r4 	   /*Return F(n-2) + F(n-1)*/ 	    
 
-end:
+exit:
     pop {r4, lr}       /* Pop lr and r4 from the stack */
     bx lr              /* Leave genFiTerm */

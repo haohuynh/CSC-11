@@ -40,9 +40,9 @@ main:
  cmp r0,#-1 /* check if r0 == -1*/
  beq _exit
  
- /*bl genFiTerm /* find the value at the position n_term in the Fibonacci sequence */
+ bl genFiTerm /* find the value at the position n_term in the Fibonacci sequence */
  
- mov r1, #-1 /* r1 contains the value */
+ mov r1, r0 /* r1 contains the value */
  ldr r0, result_mess_addr /* r0 <- &result_mess*/
  bl printf /* call to printf */	
  
@@ -61,6 +61,6 @@ n_term_addr : .word n_term
 /* External Functions*/
 .global printf
 .global scanf
-@.global genFiTerm
+.global genFiTerm
 
 
