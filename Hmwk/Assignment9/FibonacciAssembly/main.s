@@ -23,7 +23,8 @@ n_term: .word 0
 .global main
 main:
 
- push {r4, lr}	
+  str lr, [sp,#-4]!            /* Push lr onto the top of the stack */
+  sub sp, sp, #4   
  
  _do_while_loop:
  
@@ -49,7 +50,8 @@ main:
  bal _do_while_loop 
   
  _exit: 
- pop {r4, lr}
+ add sp, sp, #+4              /* Discard the integer read by scanf */
+ ldr lr, [sp], #+4   
  bx lr /* return from main using lr */
  
 /*Addresses Referencing*/
