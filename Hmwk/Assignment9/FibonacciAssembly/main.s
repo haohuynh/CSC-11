@@ -18,13 +18,16 @@ n_scan_pattern : .asciz "%d"
 .balign 4
 n_term: .word 0
 
+.balign 4
+return: .word 0
+
 .text
 
 .global main
 main:
 
-  str lr, [sp,#-4]!            /* Push lr onto the top of the stack */
-  sub sp, sp, #4   
+  ldr r1, address_of_return /* r1 ? &address_of_return */
+ str lr, [r1] /* *r1 ? lr */
  
  _do_while_loop:
  
@@ -50,8 +53,8 @@ main:
  bal _do_while_loop 
   
  _exit: 
- add sp, sp, #+4              /* Discard the integer read by scanf */
- ldr lr, [sp], #+4   
+ ldr lr, address_of_return /* lr ? &address_of_return */
+ ldr lr, [lr] /* lr ? *lr */
  bx lr /* return from main using lr */
  
 /*Addresses Referencing*/
@@ -59,6 +62,7 @@ wel_mess_addr : .word wel_mess
 result_mess_addr : .word result_mess
 n_scan_pattern_addr : .word n_scan_pattern
 n_term_addr : .word n_term
+address_of_return : .word return
 
 /* External Functions*/
 .global printf
