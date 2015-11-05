@@ -17,15 +17,15 @@ genFiTerm:
 gt_2:
                  
     sub r0, r0, #1     /* r0 = r0 - 1 , find F(n-1)*/
-    bl factorial
+    bl genFiTerm
 	
 	mov r4, r0         /* Copy the F(n-1) in r0 to r4 */
 	
 	sub r0, r0, #2     /* r0 = r0 - 2 , find F(n-2)*/
-    bl factorial
+    bl genFiTerm
 	
 	add r0, r0, r4 	   /*Return F(n-2) + F(n-1)*/ 	    
 
 end:
     pop {r4, lr}       /* Pop lr and r4 from the stack */
-    bx lr              /* Leave factorial */
+    bx lr              /* Leave genFiTerm */
