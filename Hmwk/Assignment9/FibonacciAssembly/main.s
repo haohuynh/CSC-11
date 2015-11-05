@@ -4,7 +4,7 @@
 
 /* The welcome message */
 .balign 4
-wel_mess: .asciz "\nPlease enter a position in the Fibonacci sequence or -1 stop this program: "
+wel_mess: .asciz "\nPlease enter a position in the Fibonacci sequence or -1 to stop this program: "
 
 /* The result message */
 .balign 4
@@ -14,7 +14,7 @@ result_mess: .asciz "The result is: %d"
 .balign 4
 n_scan_pattern : .asciz "%d"
 
-/* Where scanf will store a menu option*/
+/* Where scanf will store the n th*/
 .balign 4
 n_term: .word 0
 
@@ -23,7 +23,7 @@ n_term: .word 0
 .global main
 main:
 
- push {r4, lr}
+ push {r4, lr} /*Store the address of the next instruction after this main*/
   
  _do_while_loop:
  
@@ -49,7 +49,7 @@ main:
  bal _do_while_loop 
   
  _exit: 
- pop {r4, lr}
+ pop {r4, lr} /*Load the address of the next instruction*/
  bx lr /* return from main using lr */
  
 /*Addresses Referencing*/

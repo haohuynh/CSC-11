@@ -21,9 +21,9 @@ gt_2:
     sub r0, r0, #1     /* r0 = r0 - 1 , find F(n-1)*/
     bl genFiTerm
 
-    mov r5, r0         /* Copy the F(n-1) in r0 to r4 */
+    mov r5, r0         /* Copy the F(n-1) in r0 to r5 */
 
-    mov r0, r4 		/*Return the real n value from the beginning*/
+    mov r0, r4 		/*Return the real n value before finding the F(n-1)*/
     sub r0, r0, #2     /* r0 = r0 - 2 , find F(n-2)*/
     bl genFiTerm
 
