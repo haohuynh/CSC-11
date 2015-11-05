@@ -1,0 +1,3 @@
+as -o main.o main.s
+as -o genFiTerm.o genFiTerm.s
+gcc -o main genFiTerm.o main.o

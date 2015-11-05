@@ -1,0 +1,31 @@
+/*-- genFiTerm.s : generates a fibonacci term */
+
+.data
+
+.text
+
+.global genFiTerm
+genFiTerm:
+
+    push {r4, lr}       /* Push r4 and lr onto the stack */
+     
+    cmp r0, #2         /* compare r0 and 2 */
+    bgt gt_2     	   /* if r0 > 2 then branch */
+    mov r0, #1         /* r0 = 1. This is the return */
+    bal end
+	
+gt_2:
+                 
+    sub r0, r0, #1     /* r0 = r0 - 1 , find F(n-1)*/
+    bl factorial
+	
+	mov r4, r0         /* Copy the F(n-1) in r0 to r4 */
+	
+	sub r0, r0, #2     /* r0 = r0 - 2 , find F(n-2)*/
+    bl factorial
+	
+	add r0, r0, r4 	   /*Return F(n-2) + F(n-1)*/ 	    
+
+end:
+    pop {r4, lr}       /* Pop lr and r4 from the stack */
+    bx lr              /* Leave factorial */
