@@ -47,7 +47,7 @@ main:
  beq _done_for_loop
  add r3, r1, r2, LSL #2 /* r3 <- r1 + (r2*4) */
  ldr r4, [r3, -#4] /* r4 = F(n-1) */
- ldr r5, [r3, -#8] /* r5 = F(n-2) *
+ ldr r5, [r3, -#8] /* r5 = F(n-2) */
  add [r3], r4, r5 /*F(n) = F(n-1) + F(n-2)*/ 
  add r2, r2, #1 /* r2 <- r2 + 1 */
  bal _for_loop
@@ -71,7 +71,8 @@ main:
  
  ldr r1, fArry_addr
  mov r2, #4 /* r2 = 4 (bytes) */
- mul r0, r0, r2 /* r0 = index * 4 (bytes) */
+ mov r3, r0 /* r3 : the n term */
+ mul r0, r3, r2 /* r0 = index * 4 (bytes) */
  ldr r1, [r1, +r0] /* r1 contains the value */
  ldr r0, result_mess_addr /* r0 <- &result_mess*/
  bl printf /* call to printf */	
