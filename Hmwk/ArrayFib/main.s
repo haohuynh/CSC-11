@@ -46,7 +46,9 @@ main:
  cmp r2, #45 /*Check if r2 == 45 : the size of the array*/
  beq _done_for_loop
  add r3, r1, r2, LSL #2 /* r3 <- r1 + (r2*4) */
- add [r3], [r3, -#4], [r3, -#8] /*F(n) = F(n-1) + F(n-2)*/ 
+ ldr r4, [r3, -#4] /* r4 = F(n-1) */
+ ldr r5, [r3, -#8] /* r5 = F(n-2) *
+ add [r3], r4, r5 /*F(n) = F(n-1) + F(n-2)*/ 
  add r2, r2, #1 /* r2 <- r2 + 1 */
  bal _for_loop
  _done_for_loop:
@@ -69,7 +71,7 @@ main:
  
  ldr r1, fArry_addr
  mul r0, r0, #4
- mov r1, [r1, +r0] /* r1 contains the value */
+ ldr r1, [r1, +r0] /* r1 contains the value */
  ldr r0, result_mess_addr /* r0 <- &result_mess*/
  bl printf /* call to printf */	
  
