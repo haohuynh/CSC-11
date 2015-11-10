@@ -70,7 +70,8 @@ main:
  ble _exit
  
  ldr r1, fArry_addr
- mul r0, r0, #4
+ mov r2, #4 /* r2 = 4 (bytes) */
+ mul r0, r0, r2 /* r0 = index * 4 (bytes) */
  ldr r1, [r1, +r0] /* r1 contains the value */
  ldr r0, result_mess_addr /* r0 <- &result_mess*/
  bl printf /* call to printf */	
