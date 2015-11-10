@@ -4,7 +4,7 @@
 
 /* The welcome message */
 .balign 4
-wel_mess: .asciz "\nPlease enter a position in the Fibonacci sequence or -1 to stop this program: "
+wel_mess: .asciz "\nPlease enter a position in the Fibonacci sequence [0-44]: "
 
 /* The result message */
 .balign 4
@@ -28,37 +28,9 @@ fArry: .skip 180
 main:
 
  push {r4, lr} /*Store the address of the next instruction after this main*/
-
  
- /*Start filling up the Fibonacci array*/
-  
- ldr r1, fArry_addr /*r1 is the pointer pointing to the beginning of the Fibonacci array*/
- 
- mov r2, #0 /*Store the first Fibonacci term to the first element */
- str r2, [r1]
- 
- mov r2, #1 /*Store the second Fibonacci term to the second element */
- str r2, [r1, +#4]
- 
- mov r2, #2 /*r2 is now the index of a element in the Fibonacci array*/
- 
- _for_loop:
- 
- cmp r2, #45 /*Check if r2 == 45 : the size of the array*/
- beq _done_for_loop
- 
- add r3, r1, r2, LSL #2 /* r3 <- r1 + (r2*4) */
- ldr r4, [r3, #-8] /* r4 = F(n-2) */
- ldr r5, [r3, #+4] /* r5 = F(n-1) */
- 
- add r4, r4, r5 /* r4 = F(n-2) + F(n-1) */
- str r4, [r3, #+4] /*F(n) = F(n-2) + F(n-1)*/ 
- 
- add r2, r2, #1 /* r2 <- r2 + 1 */
- bal _for_loop
- 
- _done_for_loop:
- /*End filling up the Fibonacci array*/
+ ldr r0, fArry_addr /* r0 is the pointer pointing to the beginning of fArry */
+ bl getArrayFibTerm /* Call getArrayFibTerm function*/
   
  _do_while_loop:
  
@@ -75,11 +47,20 @@ main:
  cmp r0,#-1 /* check if r0 <= -1*/
  ble _exit
  
- ldr r1, fArry_addr
+ cmp r0,#45 /* check if r0 >=45*/
+ bge _process_over_size
+ 
+ ldr r1, fArry_addr /* The starting pointer of the Fibonacci Array */
  mov r2, #4 /* r2 = 4 (bytes) */
  mov r3, r0 /* r3 : the n term */
- mul r0, r3, r2 /* r0 = index * 4 (bytes) */
+ mul r0, r3, r2 /* r0 = index * 4 (bytes) : current position in the Fibonacci Array */
  ldr r1, [r1, +r0] /* r1 contains the value */
+ bal _output
+ 
+ _process_over_size:
+ mov r1, #0 /*Output 0 the over_size case */
+ 
+ _output:
  ldr r0, result_mess_addr /* r0 <- &result_mess*/
  bl printf /* call to printf */	
  
@@ -99,6 +80,6 @@ fArry_addr : .word fArry
 /* External Functions*/
 .global printf
 .global scanf
-
+.global getArrayFibTerm
 
 

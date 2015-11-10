@@ -1,2 +1,3 @@
 as -o main.o main.s
-gcc -o main main.o
+as -o getArrayFibTerm.o getArrayFibTerm.s
+gcc -o main getArrayFibTerm.o main.o
