@@ -43,14 +43,21 @@ main:
  mov r2, #2 /*r2 is now the index of a element in the Fibonacci array*/
  
  _for_loop:
+ 
  cmp r2, #45 /*Check if r2 == 45 : the size of the array*/
  beq _done_for_loop
+ 
  add r3, r1, r2, LSL #2 /* r3 <- r1 + (r2*4) */
- ldr r4, [r3, -#4] /* r4 = F(n-1) */
- ldr r5, [r3, -#8] /* r5 = F(n-2) */
- add [r3], r4, r5 /*F(n) = F(n-1) + F(n-2)*/ 
+ 
+ str [r3, -#4], r4 /* r4 = F(n-1) */
+ mov r5, [r3, -#8] /* r5 = F(n-2) */
+ 
+ add r4, r4, r5 /* r4 = F(n-1) + F(n-2) */
+ str r4, [r3] /*F(n) = F(n-1) + F(n-2)*/ 
+ 
  add r2, r2, #1 /* r2 <- r2 + 1 */
  bal _for_loop
+ 
  _done_for_loop:
  /*End filling up the Fibonacci array*/
   
