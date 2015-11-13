@@ -108,7 +108,7 @@ str r0, [r1] /* start_time <- the relative current time*/
 
 ldr r0, [sp] /* first parameter of collatz: the value stored (by scanf) in the top of the stack */
 bl collatz /* call collatz */
-push {r2, r0} /* store the result of collatz funtion*/
+push {r0, r2} /* store the result of collatz funtion*/
 
 ldr r1,=start_time /*Save the start time of collatz function*/
 ldr r1, [r1]
@@ -120,7 +120,7 @@ ldr r0, = reg_coll_msg
 bl printf
 /*-----Timimg Collatz End----------*/
 
-pop {r2, r0} /* load the result of collatz2 funtion*/
+pop {r0, r2} /* load the result of collatz2 funtion*/
 mov r2, r0 /* third parameter of printf: the result of collatz */
 ldr r1, [sp] /* second parameter of printf: the value stored (by scanf) in the top of the stack */
 ldr r0, address_of_message2 /* first parameter of printf: &address_of_message2 */
@@ -135,7 +135,7 @@ str r0, [r1] /* start_time <- the relative current time*/
 
 ldr r0, [sp] /* first parameter of collatz: the value stored (by scanf) in the top of the stack */
 bl collatz2 /* call collatz */
-push {r2, r0} /* store the result of collatz2 funtion*/
+push {r0, r2} /* store the result of collatz2 funtion*/
 
 ldr r1,=start_time /*Save the start time of collatz function*/
 ldr r1, [r1]
@@ -147,7 +147,7 @@ ldr r0, = pre_coll_msg
 bl printf
 /*-----Timimg Collatz2 End----------*/
 
-pop {r2, r0} /* load the result of collatz2 funtion*/
+pop {r0, r2} /* load the result of collatz2 funtion*/
 mov r2, r0 /* third parameter of printf: the result of collatz */
 ldr r1, [sp] /* second parameter of printf: the value stored (by scanf) in the top of the stack */
 ldr r0, address_of_message3 /* first parameter of printf: &address_of_message2 */
