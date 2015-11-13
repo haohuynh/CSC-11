@@ -104,14 +104,14 @@ bl scanf /* call scanf */
 ldr r1,=start_time /*Save the start time of collatz function*/
 mov r0, #0 /*Create a NULL for the time function*/
 bl time /*Load the current time in seconds to r0*/
-mov [r1], r0 /* start_time <- the relative current time*/
+str r0, [r1] /* start_time <- the relative current time*/
 
 ldr r0, [sp] /* first parameter of collatz: the value stored (by scanf) in the top of the stack */
 bl collatz /* call collatz */
 push {r2, r0} /* store the result of collatz funtion*/
 
 ldr r1,=start_time /*Save the start time of collatz function*/
-mov r1, [r1]
+ldr r1, [r1]
 mov r0, #0 /*Create a NULL for the time function*/
 bl time /*Load the current time in seconds to r0*/
 sub r1, r0, r1 /*processing time = endTime - startTime*/
@@ -131,14 +131,14 @@ bl printf
 ldr r1,=start_time /*Save the start time of collatz function*/
 mov r0, #0 /*Create a NULL for the time function*/
 bl time /*Load the current time in seconds to r0*/
-mov [r1], r0 /* start_time <- the relative current time*/
+str r0, [r1] /* start_time <- the relative current time*/
 
 ldr r0, [sp] /* first parameter of collatz: the value stored (by scanf) in the top of the stack */
 bl collatz2 /* call collatz */
 push {r2, r0} /* store the result of collatz2 funtion*/
 
 ldr r1,=start_time /*Save the start time of collatz function*/
-mov r1, [r1]
+ldr r1, [r1]
 mov r0, #0 /*Create a NULL for the time function*/
 bl time /*Load the current time in seconds to r0*/
 sub r1, r0, r1 /*processing time = endTime - startTime*/
