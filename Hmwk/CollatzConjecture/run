@@ -1,0 +1,3 @@
+as -o timeCollatz.o timeCollatz.s
+gcc -o timeCollatz timeCollatz.o
+./timeCollatz
