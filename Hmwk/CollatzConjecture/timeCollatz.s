@@ -128,7 +128,6 @@ bl printf
 /*-----Timimg Collatz End----------*/
 
 
-
 /*-----Timimg Collatz2 Start----------*/
 mov r0, #0 /*Create a NULL for the time function*/
 bl time /*Load the current time in seconds to r0*/
@@ -155,7 +154,6 @@ ldr r0, address_of_message3 /* first parameter of printf: &address_of_message3 *
 bl printf
 
 /*-----Timimg Collatz2 End----------*/
-
 
 
 add sp, sp, #4
