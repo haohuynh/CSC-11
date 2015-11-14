@@ -145,7 +145,7 @@ ldr r1,=start_time /*Save the start time of collatz function*/
 ldr r1, [r1]
 sub r1, r0, r1 /*processing time = endTime - startTime*/
 
-ldr r0, =reg_coll_msg
+ldr r0, =pre_coll_msg
 bl printf
 
 pop {r0} /* load the result of collatz2 funtion*/
