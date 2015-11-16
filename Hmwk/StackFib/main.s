@@ -25,7 +25,6 @@ main:
 
  push {r4, lr} /*Store the address of the next instruction after this main*/
  
- ldr r0, fArry_addr /* r0 is the pointer pointing to the beginning of fArry */
  bl getStackFibTerm /* Call getStackFibTerm function*/
   
  _do_while_loop:
