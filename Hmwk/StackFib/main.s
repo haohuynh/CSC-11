@@ -65,7 +65,7 @@ main:
 	
  _exit: 	
  /* Clean up the stack before exiting the program */	
- add sp, sp, #184	/* 46 elements * 4 bytes = 186 bytes */
+ add sp, sp, #180	/* 45 elements * 4 bytes = 180 bytes */
  
  pop {r4, lr} /*Load the address of the next instruction*/
  bx lr /* return from main using lr */
