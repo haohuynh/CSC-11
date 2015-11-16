@@ -47,8 +47,7 @@ main:
   
  mov r2, #4 /* r2 = 4 (bytes) */
  mov r3, #45 /* r3 : the max index value in the Fibonacci Sequence */
- sub r3, r3, r0 /* r3 : the (n-1) term counting backward from (45 + 1) */
- add r3, r3, #1 /* r3 : the n term counting backward from (45 + 1) */
+ sub r3, r3, r0 /* r3 : the n term counting backward from 45 */
  mul r0, r3, r2 /* r0 = backward-index * 4 (bytes) : current position in the Fibonacci Array */
  ldr r1, [sp, +r0] /* Adjust the stack pointer to the n position, then r1 contains the value */
  bal _output

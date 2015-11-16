@@ -24,9 +24,9 @@ getStackFibTerm:
 	cmp r0, #45 /*Check if r0 > 45 : the size of the array*/
 	bgt _done_for_loop
  	
-	pop {r1, r2}	/* r1 = F(n-2), r2 = F(n-1) */
-	add r3, r1, r2 /* r3 = F(n-2) + F(n-1) */
-	push {r1, r2}	/* Store F(n-2) and F(n-1) back to the stack */ 
+	pop {r1, r2}	/* r1 = F(n-1), r2 = F(n-2) */
+	add r3, r1, r2 /* r3 = F(n-1) + F(n-2) */
+	push {r1, r2}	/* Store F(n-1) and F(n-2) back to the stack */ 
 	sub sp, sp, #4 /* Prepare 4 bytes to store the F(n) */
 	str r3, [sp] /* Store r3 to the stack */
 	
