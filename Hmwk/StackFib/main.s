@@ -62,10 +62,11 @@ main:
  
  bal _do_while_loop 
 	
+	
+ _exit: 	
  /* Clean up the stack before exiting the program */	
  add sp, sp, #184	/* 46 elements * 4 bytes = 186 bytes */
  
- _exit: 
  pop {r4, lr} /*Load the address of the next instruction*/
  bx lr /* return from main using lr */
  
