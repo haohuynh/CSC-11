@@ -18,10 +18,6 @@ n_scan_pattern : .asciz "%d"
 .balign 4
 n_term: .word 0
 
-/* The array contains the first 45 terms in the Fibonacci Sequence*/
-.balign 4
-fArry: .skip 180
-
 .text
 
 .global main
@@ -49,15 +45,13 @@ main:
  
  cmp r0,#45 /* check if r0 >=45*/
  bgt _process_over_size
- 
- ldr r1, fArry_addr /* The starting pointer of the Fibonacci Array */
+  
  mov r2, #4 /* r2 = 4 (bytes) */
  mov r3, #45 /* r3 : the max index value in the Fibonacci Sequence */
- sub r3, r3, r0 /* r3 : the n term counting backward from 45 */
- add r3, r3, #1
+ sub r3, r3, r0 /* r3 : the (n-1) term counting backward from (45 + 1) */
+ add r3, r3, #1 /* r3 : the n term counting backward from (45 + 1) */
  mul r0, r3, r2 /* r0 = backward-index * 4 (bytes) : current position in the Fibonacci Array */
- 
- ldr r1, [r1, +r0] /* r1 contains the value */
+ ldr r1, [sp, +r0] /* Adjust the stack pointer to the n position, then r1 contains the value */
  bal _output
  
  _process_over_size:
@@ -68,7 +62,10 @@ main:
  bl printf /* call to printf */	
  
  bal _do_while_loop 
-  
+	
+ /* Clean up the stack before exiting the program */	
+ add sp, sp, #184	/* 46 elements * 4 bytes = 186 bytes */
+ 
  _exit: 
  pop {r4, lr} /*Load the address of the next instruction*/
  bx lr /* return from main using lr */
@@ -78,7 +75,6 @@ wel_mess_addr : .word wel_mess
 result_mess_addr : .word result_mess
 n_scan_pattern_addr : .word n_scan_pattern
 n_term_addr : .word n_term
-fArry_addr : .word fArry
 
 /* External Functions*/
 .global printf
