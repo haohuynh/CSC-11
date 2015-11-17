@@ -1,3 +1,3 @@
-as -g -o main.o main.s
-as -g -o getStackFibTerm.o getStackFibTerm.s
-gcc -g -o main getStackFibTerm.o main.o
+as -o main.o main.s
+as -o getStackFibTerm.o getStackFibTerm.s
+gcc -o main getStackFibTerm.o main.o

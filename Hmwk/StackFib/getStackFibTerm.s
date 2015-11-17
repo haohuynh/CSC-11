@@ -13,8 +13,8 @@ getStackFibTerm:
 	ldr r0, =return /* Save the return address*/
 	str lr, [r0]
     	
-	mov r0, #1 /*Store the first Fibonacci term to the first element */
-    mov r1, #1 /*Store the second Fibonacci term to the second element */
+	mov r0, #1 /*Store the second Fibonacci term */
+    mov r1, #1 /*Store the first Fibonacci term */
     push {r0, r1}
  
 	mov r0, #3 /*r0 is now the index of a element in the Fibonacci array*/
@@ -29,8 +29,7 @@ getStackFibTerm:
 	push {r1, r2}	/* Store F(n-1) and F(n-2) back to the stack */ 
 	sub sp, sp, #4 /* Prepare 4 bytes to store the F(n) */
 	str r3, [sp] /* Store r3 to the stack */
-	
-	
+		
 	add r0, r0, #1 /* r0 <- (r0 + 1) */
 	bal _for_loop
  
