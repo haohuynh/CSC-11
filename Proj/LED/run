@@ -1,0 +1,4 @@
+gcc -o testLED testLED.c -lwiringPi
+as -o testLED.o testLED.s 
+gcc -o testLEDAss testLED.o -lwiringPi 
+   
