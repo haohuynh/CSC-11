@@ -17,20 +17,17 @@ main:
 
  push {ip, lr}
  
- ldr r2, =0x019EB851 @w: WD 28 BP -28
- mov r0, #8
- mul r1, r2, r0 @8*w 
-
- ldr r3, =0x000000C9 @pi: WD 8 BP -6
- ldr r0, =0x00000001 @cd: WD 1 BP -1
- mul r2, r3, r0 @r2 = pi*cd
+ ldr r1, =0x019EB851 @w: WD 28 BP -28
+ lsl r1, #3 @8*w
  
- mov r3, r2
+ ldr r3, =0x000000C9 @pi: WD 8 BP -6
+ lsr r3, #1 @ pi* cd with cd = 0.5
+  
  ldr r0, =0x00000005 @ dd: WD 8 BP -8  (d^2)
  mul r2, r3, r0 @r2 = pi*cd*dd
  
  mov r3, r2
- ldr r0, =0x0000004E @c: WD 15 BP -15
+ ldr r0, =0x0000009D @c: WD 15 BP -16
  mul r2, r3, r0 @r2 = pi*cd*dd*c
  
  bl getDivMod @r0 = v^2: (8*w)/(pi*cd*dd*c) 
@@ -45,14 +42,12 @@ main:
  bl printf
  
  pop {r0, r1} @ r0 = v^2
- mov r2, r0
- ldr r0, =0x00000001 @ 0.5 : WD 1 BP -1
- mul r1, r2, r0 @0.5 * v^2
+ mov r2, r0 
+ lsr r2, #1 @ 0.5* v^2
  
- mov r2, r1
  ldr r0, =0x0000004E @ c: WD 15 BP -15
- mul r1, r2, r0 @0.5 * v^2 * c : WD 32 BP -14
- lsr r1, #14 @q : WD 32
+ mul r1, r2, r0 @0.5 * v^2 * c : WD 32 BP -13
+ lsr r1, #13 @q : WD 32
  
  ldr r0, =density_mess
  bl printf

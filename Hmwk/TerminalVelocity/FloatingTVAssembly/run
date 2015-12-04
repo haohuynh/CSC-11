@@ -1,2 +1,2 @@
-as -o main.o main.s
+as -mfpu=vfp -o main.o main.s
 gcc -o main main.o

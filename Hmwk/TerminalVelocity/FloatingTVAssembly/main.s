@@ -21,6 +21,9 @@ pi: .float 3.141592654;
 .balign 4
 half: .float 0.5;
 
+.balign 4
+eight: .float 8.0;
+
 /* The velocity message */
 .balign 4
 velocity_mess: .asciz "The terminal velocity for a golf ball is: %f ft/sec\n"
@@ -36,7 +39,8 @@ main:
 
  push {ip, lr}
  
- vmov s0, #8
+ ldr r0, =eight
+ vldr s0, [r0]
  ldr r0, =w   
  vldr s1, [r0]
  vmul.f32 s2, s0, s1 @ 8*w
