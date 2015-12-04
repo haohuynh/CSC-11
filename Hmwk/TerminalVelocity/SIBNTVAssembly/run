@@ -1,0 +1,4 @@
+as -o getDivMod.o getDivMod.s
+as -o sqrt.o sqrt.s
+as -o main.o main.s
+gcc -o main getDivMod.o sqrt.o main.o

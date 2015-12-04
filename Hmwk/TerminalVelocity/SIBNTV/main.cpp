@@ -56,24 +56,26 @@ unsigned int getDivMod(unsigned int R1, unsigned int R2){
 
 /**
  * Square root of a number by Newton's method
- * @param R0
- * @return square root of R0
+ * @param R1
+ * @return square root of R1
  */
-unsigned int sqrt(unsigned int R2){
+unsigned int sqrt(unsigned int R1){
     
-    unsigned int R0; 
+    unsigned int R0 = getDivMod(R1,2);
     
-    unsigned int half = 0x00000001; // WD 1 BP -1
+    unsigned int R2; 
     
-    unsigned int R1 = getDivMod(R2,2);
-    
+    unsigned int R3 = 0x00000001; // WD 1 BP -1
+      
     do{
-        R0 = R1;
-        R1 = half*( R0 + getDivMod(R2,R0));
-        R1 >>= 1;
-    }while (R1 != R0);
+        R2 = R0;
+        R0 = getDivMod(R1,R2);
+        R0 = R2 + R0;
+        R0 = R3*R0;
+        R0 >>= 1;
+    }while (R0 != R2);
     
-    return R1;
+    return R0;
 }
 
 /*
@@ -82,22 +84,35 @@ unsigned int sqrt(unsigned int R2){
  */
 int main(int argc, char** argv) {
     
-    unsigned int w = 0x019EB851; // WD 28 BP -28
-    unsigned int pi = 0x000000C9; // WD 8 BP -6
-    unsigned int cd = 0x00000001; // WD 1 BP -1
-    unsigned int dd = 0x00000005; // WD 8 BP -8  (d^2)
-    unsigned int c = 0x0000004E; // WD 15 BP -15
+    unsigned int R1 = 0x019EB851; // w: WD 28 BP -28
+    R1 = R1 * 8;
+        
+    unsigned int R2 = 0x000000C9; //pi: WD 8 BP -6
+    unsigned int R0 = 0x00000001; // cd: WD 1 BP -1
+    R2 = R2 * R0; // R2 = pi*cd
     
-    unsigned int half = 0x00000001; // WD 1 BP -1
-         
-    unsigned int v = sqrt(getDivMod((8*w),(pi*cd*dd*c))); // WD 32 BP 1
-    v <<= 1; //WD 32
+    R0 = 0x00000005; // dd: WD 8 BP -8  (d^2)
+    R2 = R2 * R0; // R2 = pi*cd*dd
     
-    unsigned int q = half*c*(getDivMod((8*w),(pi*cd*dd*c))); //WD 32 BP -14
-    q >>= 14; //WD 32
+    R0 = 0x0000004E; // c: WD 15 BP -15
+    R2 = R2 * R0; // R2 = pi*cd*dd*c
     
-    cout << "The terminal velocity for a golf ball is: " << v << " ft/sec\n";
-    cout << "The dynamic pressure is: " << q << " lb/ft^2\n";
+    R0 = getDivMod(R1,R2); //v^2: (8*w)/(pi*cd*dd*c) 
+    unsigned int stack = R0; //v^2: (8*w)/(pi*cd*dd*c)        
+    R1 = R0;
+    R0 = sqrt(R1); //v: WD 32 BP 1       
+    R0 <<= 1; //v: WD 32        
+    R1 = R0;
+    cout << "The terminal velocity for a golf ball is: " << R1 << " ft/sec\n";
+        
+    R1 = stack; //v^2: (8*w)/(pi*cd*dd*c)   
+    R0 = 0x00000001; // 0.5 : WD 1 BP -1
+    R1 = R1 * R0; //0.5 * v^2
+    
+    R0 = 0x0000004E; // c: WD 15 BP -15
+    R1 = R1 * R0; //0.5 * v^2 * c : WD 32 BP -14
+    R1 >>= 14; // q : WD 32
+    cout << "The dynamic pressure is: " << R1 << " lb/ft^2\n";
     
     return 0;
 }
