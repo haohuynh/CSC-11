@@ -11,7 +11,7 @@
 .global getDivMod
 getDivMod:
 
- push{ip, lr}
+ push {ip, lr}
  
  mov r3, #1  @ r3 is the scalar of the original denominator
  mov r4, r2	@ r4 is a copy of the denominator

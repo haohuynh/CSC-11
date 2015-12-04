@@ -11,7 +11,7 @@
 .global sqrt
 sqrt:
 
- push{ip, lr}
+ push {ip, lr}
 
  mov r2, #2 /* Let the denominator be 2*/
  
