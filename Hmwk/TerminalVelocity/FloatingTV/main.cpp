@@ -46,8 +46,8 @@ int main(int argc, char** argv) {
     double d0 = s0;  
     cout << "The terminal velocity for a golf ball is: " << d0 << " ft/sec\n";
     
-    s0 = stack;
-    s1 = c;
+    s1 = stack;
+    s0 = c;
     s2 = s0 * s1;
     s1 = half;
     s0 = s1*s2;
