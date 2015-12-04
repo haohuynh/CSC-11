@@ -34,7 +34,7 @@ density_mess: .asciz "The dynamic pressure is: %f lb/ft^2\n"
 
 /* A timer message*/
 .balign 4
-time_msg: .asciz "\n\n\nThe total time to run this program is: %d ms\n"
+time_msg: .asciz "\n\n\nThe total time to run this program is: %d s\n"
 
 /* A timer mile stone*/
 .balign 4
@@ -87,7 +87,7 @@ main:
  vcvt.f64.f32 d0, s0
  ldr r0, =velocity_mess
  vmov r2, r3, d0
- bl printf
+ @bl printf /*Ignore the output to forcusing on the main process*/
  
  vpop {s0, s1}
  ldr r0, =c
@@ -100,7 +100,7 @@ main:
  vcvt.f64.f32 d0, s0
  ldr r0, =density_mess
  vmov r2, r3, d0
- bl printf
+ @bl printf /*Ignore the output to forcusing on the main process*/
  
  
  sub r6, r6, #1

@@ -12,7 +12,7 @@ density_mess: .asciz "The dynamic pressure is: %d lb/ft^2\n"
 
 /* A timer message*/
 .balign 4
-time_msg: .asciz "\n\n\nThe total time to run this program is: %d ms\n"
+time_msg: .asciz "\n\n\nThe total time to run this program is: %d s\n"
 
 /* A timer mile stone*/
 .balign 4
@@ -58,7 +58,7 @@ main:
  
  mov r1, r0
  ldr r0, =velocity_mess 
- bl printf
+ @bl printf /*Ignore the output to forcusing on the main process*/
  
  pop {r0, r1} @ r0 = v^2
  mov r2, r0 
@@ -69,7 +69,7 @@ main:
  lsr r1, #13 @q : WD 32
  
  ldr r0, =density_mess
- bl printf
+ @bl printf /*Ignore the output to forcusing on the main process*/
  
  
  sub r6, r6, #1
