@@ -17,9 +17,9 @@ main:
 
  push {ip, lr}
  
- ldr r1, =0x019EB851 @w: WD 28 BP -28
+ ldr r2, =0x019EB851 @w: WD 28 BP -28
  mov r0, #8
- mul r1, r1, r0 @8*w 
+ mul r1, r2, r0 @8*w 
 
  ldr r3, =0x000000C9 @pi: WD 8 BP -6
  ldr r0, =0x00000001 @cd: WD 1 BP -1
