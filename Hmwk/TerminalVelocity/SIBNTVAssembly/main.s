@@ -44,7 +44,8 @@ main:
  ldr r0, =velocity_mess 
  bl printf
  
- pop {r2, r1} @ r2 = v^2
+ pop {r0, r1} @ r0 = v^2
+ mov r2, r0
  ldr r0, =0x00000001 @ 0.5 : WD 1 BP -1
  mul r1, r2, r0 @0.5 * v^2
  
