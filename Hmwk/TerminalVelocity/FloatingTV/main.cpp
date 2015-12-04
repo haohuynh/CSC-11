@@ -21,9 +21,7 @@ int main(int argc, char** argv) {
     float cd = 0.5;
     float c = 0.0023769;
     float pi = 3.141592654;
-    
-    
-    
+        
     float s0 = w;
     float s1 = 8;
     float s2 = s0* s1; //8w
