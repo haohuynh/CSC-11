@@ -13,9 +13,9 @@ using namespace std;
  * Div/Mod by the multiply shifted method 
  * @param R1 : The numerator
  * @param R2 : The denominator
- * @return R1/R2
+ * @return The remainder
  */
-unsigned int getDivMod(unsigned int R1, unsigned int R2){
+unsigned int getMod(unsigned int R1, unsigned int R2){
     
      int R3 = 1; // The Scalar
 
