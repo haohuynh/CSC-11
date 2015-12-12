@@ -149,7 +149,7 @@ _restart:
 _REINPUT:
 
         cout << "\nThe current toothpicks are: " << crNbTPks << "\n";
-        cout << "Enter the number of toothpicks you want to withdraw (1 to 3): ";
+        cout << "Please enter the number of toothpicks you want to withdraw (1 to 3): ";
         cin >> nWiTPks;
 
         if (nWiTPks < MIN_WITHDRAW_TOOTHPICK) {
@@ -176,7 +176,9 @@ _REINPUT:
             cout << "You win !!!";
             break;
 
-        } else if (crNbTPks == 0) {
+        } 
+        
+        if (crNbTPks == 0) {
 
             cout << "You lose!";
             break;
