@@ -1,0 +1,5 @@
+as -o getMod.o getMod.s
+as -o calWTPForComputer.o calWTPForComputer.s
+as -o main.o main.s
+gcc -o main getMod.o calWTPForComputer.o main.o
+./main
