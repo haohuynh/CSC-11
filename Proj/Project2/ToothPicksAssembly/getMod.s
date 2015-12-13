@@ -4,7 +4,7 @@
 .text
 
 /*
- Find the result of R1%R2 by Shifted Divisio method
+ Find the result of R1%R2 by Shifted Division method
  R1 is the numerator and will be the remainder
  R2 is the denominator
 */
