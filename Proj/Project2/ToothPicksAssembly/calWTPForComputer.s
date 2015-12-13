@@ -34,11 +34,9 @@ calWTPForComputer:
 	bal _exit
  _if_2:
  
- cmp r1, #3 /* Check if the remainder is 3*/
- bne _if_3
-	mov r1, #2 /* A move that makes a potential win */ 
-	bal _exit
- _if_3:
+ 
+ mov r1, #2 /* A move that makes a potential win */ 
+
  
  _exit:
  pop {ip, pc} @ pop return address into pc

@@ -61,7 +61,7 @@ unsigned int getMod(unsigned int R1, unsigned int R2) {
  */
 int calWTPForComputer(int crNTP) {
 
-    int R1 = getMod(crNTP,4);
+    int R1 = getMod(crNTP, 4);
 
     //A move that makes a potential win 
     if (R1 == 0) {
@@ -79,9 +79,7 @@ int calWTPForComputer(int crNTP) {
     }
 
     //A move that makes a potential win 
-    if (R1 == 3) {
-        return 2;
-    }
+    return 2;
 }
 
 /*
@@ -176,8 +174,8 @@ _REINPUT:
             cout << "You win !!!";
             break;
 
-        } 
-        
+        }
+
         if (crNbTPks == 0) {
 
             cout << "You lose!";
